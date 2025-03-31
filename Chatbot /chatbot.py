@@ -4,7 +4,7 @@ from flask_cors import CORS
 import google.generativeai as genai
 
 # Secure API Key
-API_KEY = "AIzaSyCHaO_fHrrnttwyuWjSFznVrDAwGmB2xUo"
+API_KEY = "AIzaSyAct0kypucQjLxqoFTm5-9Du1IEFcyc9xo"
 genai.configure(api_key=API_KEY)
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -42,3 +42,4 @@ def chat():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
