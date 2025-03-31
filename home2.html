@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot - LearnSphere</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="home2.css">
+</head>
+<body>
+    <script>
+        function checkLogin() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                alert('You must be logged in to access this page.');
+                window.location.href = '../pages/login.html';
+            }
+        }
+        checkLogin();
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = '../index.html';
+        }
+    </script>
+
+    <div class="navbar">
+        <h2>Ask Your AI Tutor</h2>
+        <button id="logoutButton" class="logout-button" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="dashboard-container">
+        <section class="chatbot">
+            <div class="chat-container">
+                <div id="chat-box"></div>
+                <div class="input-container">
+                    <textarea id="user-input" placeholder="Ask me anything..." rows="1" oninput="adjustHeight(this)"></textarea>
+                    <button onclick="sendMessage()" class="send"></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>

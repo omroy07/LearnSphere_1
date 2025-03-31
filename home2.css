@@ -1,0 +1,182 @@
+/* Import the Manrope font */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: #212121;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #212121;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Logout Button */
+.logout-button {
+    background-color: #ff6ec7;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #ff4c9f;
+}
+
+/* Chatbot Section */
+.dashboard-container {
+    width: 100%;
+    max-width: 900px;
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.chatbot {
+    width: 100%;
+    max-width: 900px;
+    min-width: 400px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+/* Chatbox */
+#chat-box {
+    flex-grow: 1;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Message container */
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 1rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    display: inline-block;
+    clear: both;
+}
+
+/* User message (align right) */
+.user-message {
+    background-color: #ff6ec7;
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+    border-bottom-right-radius: 5px;
+}
+
+/* Bot message (align left) */
+.bot-message {
+    background-color: #444;
+    color: white;
+    align-self: flex-start;
+    text-align: left;
+    border-bottom-left-radius: 5px;
+}
+
+/* Preserve bold formatting in bot responses */
+/* .bot-message b {
+    color: #ff6ec7;
+} */
+
+/* Input Container */
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1.5rem;
+    padding: 10px;
+    background-color: rgb(99, 99, 99);
+    z-index: 1000;
+}
+
+
+/* Input field */
+#user-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    resize: none;
+    min-height: 35px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+#user-input:focus {
+    outline: none;
+}
+
+/* Send button */
+.send {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+}
+
+.send:hover {
+    background-color: #f1f1f1;
+}
+
+.send::before {
+    content: '\2192'; /* Unicode for right arrow */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+}
