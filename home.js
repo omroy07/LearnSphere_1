@@ -1,38 +1,53 @@
-document.getElementById("logoutButton").addEventListener("click", function() {
+document.getElementById("logoutButton").addEventListener("click", function () {
     alert("Logging out...");
-    window.location.href = "index.html";  // Redirect to login page
+    window.location.href = "index.html";
 });
 
-// Chatbot Functionality
 function sendMessage() {
-    let userInput = document.getElementById("user-input").value;
+    let userInput = document.getElementById("user-input").value.trim();
     let chatBox = document.getElementById("chat-box");
 
-    if (userInput.trim() === "") return;
+    if (userInput === "") return;
 
-    // Display user message
-    chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
-    
-    // Send request to backend chatbot
-    fetch("http://127.0.0.1:5000/chat", {  // Ensure correct API URL
+    // Create user message bubble
+    let userMessage = document.createElement("div");
+    userMessage.classList.add("message", "user-message");
+    userMessage.innerHTML = `<b>You:</b> ${userInput}`;
+    chatBox.appendChild(userMessage);
+
+    // Send request to chatbot API
+    fetch("http://127.0.0.1:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userInput })
     })
-    
     .then(response => response.json())
     .then(data => {
+        let botMessage = document.createElement("div");
+        botMessage.classList.add("message", "bot-message");
+
         if (data.reply) {
-            chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+            // Fix bold text and line breaks
+            botMessage.innerHTML = `<b>Bot:</b> ${data.reply.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>")}`;
         } else {
-            chatBox.innerHTML += `<p><strong>Bot:</strong> Sorry, I didn't understand that.</p>`;
+            botMessage.innerHTML = `<b>Bot:</b> Sorry, I didn't understand that.`;
         }
-        chatBox.scrollTop = chatBox.scrollHeight;  // Auto-scroll
+        
+        chatBox.appendChild(botMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
     })
     .catch(error => {
         console.error("Error:", error);
-        chatBox.innerHTML += `<p><strong>AI:</strong> Error connecting to the chatbot.</p>`;
+        chatBox.innerHTML += `<p><b>Bot:</b> Error connecting to the chatbot.</p>`;
     });
 
-    document.getElementById("user-input").value = "";  // Clear input field
+    document.getElementById("user-input").value = "";
 }
+
+// Handle Enter key
+document.getElementById("user-input").addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+    }
+});
