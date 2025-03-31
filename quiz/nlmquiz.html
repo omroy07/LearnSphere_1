@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Motion Quiz - LearnSphere</title>
+    <link rel="stylesheet" href="nlmquiz.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="title">Physics Newton's Laws of Motion Quiz 🎯</h1>
+        <p class="description">Test your knowledge of motion concepts!</p>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+
+        <div id="quiz-box">
+            <h2 id="question">Loading...</h2>
+            <div id="options" class="options-grid"></div>
+            <button id="prev-btn" onclick="prevQuestion()" disabled>Previous</button>
+            <button id="next-btn" onclick="nextQuestion()" disabled>Next</button>
+            <button id="submit-btn" class="hidden" onclick="confirmSubmit()">Submit</button>
+        </div>
+
+        <!-- Warning Popup -->
+        <div id="popup" class="popup hidden">
+            <h3>⚠️ Please select an answer before proceeding!</h3>
+            <button onclick="closePopup()">OK</button>
+        </div>
+
+        <!-- Confirm Submit Popup -->
+        <div id="confirm-popup" class="popup hidden">
+            <h3>Are you sure you want to submit?</h3>
+            <button onclick="submitQuiz()">Yes, Submit</button>
+            <button onclick="closeConfirmPopup()">No, Resume</button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="result-box" class="hidden">
+            <h2>🎉 Quiz Completed!</h2>
+            <p id="score"></p>
+            <button onclick="restartQuiz()">Try Again 🔄</button>
+            <button class="motion"><a href="..\nlm\nlm.html">⬅ Back to Previous Page</a></button>
+        </div>
+    </div>
+
+    <script src="nlmquiz.js"></script>
+</body>
+
+</html>
