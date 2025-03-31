@@ -114,12 +114,11 @@ body {
 	cursor: pointer;
 }
 
-.nav-link:hover {
+/* .nav-link:hover {
 	background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(108, 108, 108, 0.3));
-	/* transform: scale(1.05); */
 	color: #fff;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
+} */
 
 .nav-link.active {
 	background-color: rgba(255, 255, 255, 0.2);
@@ -159,6 +158,38 @@ body {
 .nav-link.logout-button:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.chatbot {
+	text-decoration: none;
+    background: linear-gradient(45deg, #ff6ec7, #7873f5, #48c6ef, #6f86d6, #ff9a8b); /* Additional colors for more depth */
+    background-size: 600% 600%;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.chatbot:hover {
+    animation: gradientFlow 10s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 /*  */
